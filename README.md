@@ -3,7 +3,7 @@ Ubunto Server 22.04
 ### LINUX BASIC COMMAND
 1.VERY BASIC
 - update software
-```shell
+```bat
 sudo apt update
 sudo apt list --upgradable
 ```
