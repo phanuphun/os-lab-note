@@ -95,44 +95,43 @@ network:
 ### APACHE2
 
 ### SSH
-REF : https://linuxhint.com/install-enable-openssh-ubuntu-22-04/
-สำหรับการ Remote มาจากเครื่องอื่น
-1.INSTALL
+- สำหรับการ Remote มาจากเครื่องอื่น
+- REF : https://linuxhint.com/install-enable-openssh-ubuntu-22-04/
+1. INSTALL
 ```shell
 sudo apt install openssh-server
 ```
-2.ENABLE OPEN SSH (--now หมายถึงให้ start ตอนเปิดเครื่องทุกครั้งอย่างแน่นอน)
+2. ENABLE OPEN SSH (--now หมายถึงให้ start ตอนเปิดเครื่องทุกครั้งอย่างแน่นอน)
 ```shell
 sudo systemctl enable --now ssh
 ```
-3.CHECK STATUS
+3. CHECK STATUS
 ```shell
 sudo service ssh status
 ```
 
 ### FTP
-REF 1 : https://linuxhint.com/ubuntu-ftp-22-04-server-configuration/
-REF 2 : https://itslinuxfoss.com/how-to-install-an-ftp-server-on-ubuntu-22-04/
-1.INSTALL
+- REF 1 : https://linuxhint.com/ubuntu-ftp-22-04-server-configuration/
+- REF 2 : https://itslinuxfoss.com/how-to-install-an-ftp-server-on-ubuntu-22-04/
 
 ### COCKPIT
-REF : https://www.techrepublic.com/article/install-cockpit-ubuntu-better-server/
+- REF : https://www.techrepublic.com/article/install-cockpit-ubuntu-better-server/
 ### MYSQL
-REF : https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04
-1.INSTALL
+- REF : https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04
+1. INSTALL
 ```shell
 sudo apt install mysql-server
 ```
-2.START MYSQL
+2. START MYSQL
 ```shell
 sudo systemctl start mysql.service
 ```
-3.CONFIG
+3. CONFIG
 3.1 ADD SECURITY TO MYSQL
 ```shell
 sudo mysql_secure_installation
 ```
-4.CREATE USER
+4. CREATE USER
 4.1 ACCESS TO MYSQL
 ```shell
 sudo mysql
@@ -154,20 +153,20 @@ exit
 ```
 
 ### PHPMYADMIN
-REF : https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-20-04
-1.INSTALL
+- REF : https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-20-04
+1. INSTALL
 ```shell
 sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl
 ```
-2.OPEN PHP EXTENTION
+2. OPEN PHP EXTENTION
 ```shell
 sudo phpenmod mbstring
 ```
-3.RESTART APACHE 2
+3. RESTART APACHE 2
 ```shell
 sudo service apache2 restart
 ```
-4.CHECK USER ACCOUNT IN MYSQL
+4. CHECK USER ACCOUNT IN MYSQL
 ```shell 
 sudo mysql 
 sudo mysql -u root -p 
@@ -175,17 +174,18 @@ sudo mysql -u root -p
 ```sql
 SELECT user,authentication_string,plugin,host FROM mysql.user;
 ```
-5.CHECNG ROOT USER AUTHENTICATION `auth_socket` TO `caching_sha2_password`
+5. CHECNG ROOT USER AUTHENTICATION `auth_socket` TO `caching_sha2_password`
 ```sql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';
 ```
-6.GO TO PHPMYADMIN `https://your_domain_or_IP/phpmyadmin`
+6. GO TO PHPMYADMIN `https://your_domain_or_IP/phpmyadmin`
 
-FIX 1 : IF YOU AREADY INSTALLED AND PHP FILE NOT RUN TRY THIS
+- FIX 1 : IF YOU AREADY INSTALLED AND PHP FILE NOT RUN TRY THIS
 ```shell
 sudu apt install php
 ```
-FIX 2 : 
+- FIX 2 :
+
 ### OPENCART
 
 ### SAMBA
