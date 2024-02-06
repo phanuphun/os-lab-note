@@ -1,6 +1,6 @@
 ## READ FIRST 
 Ubunto Server 22.04
-### LINUX BASIC COMMAND
+## LINUX BASIC COMMAND
 1.VERY BASIC
 - update software
 ```bat
@@ -65,7 +65,7 @@ sudo ufw status verbose
 ```shell
 sudo allow port 22
 ```
-### CONFIG SERVER FIRST
+## CONFIG SERVER FIRST
 REF : https://www.linuxtechi.com/static-ip-address-on-ubuntu-server/
 1. ไปที่ `/etc/netplan/` หาไฟล์  `00-installer-config.yaml` (ชื่อไฟล์อาจเปลี่ยนไปตามการกำหนดค่า server)
 ```shell
@@ -92,9 +92,9 @@ network:
 ```
 
 
-### APACHE2
+## APACHE2
 
-### SSH
+## SSH
 - สำหรับการ Remote มาจากเครื่องอื่น
 - REF : https://linuxhint.com/install-enable-openssh-ubuntu-22-04/
 1. INSTALL
@@ -110,13 +110,13 @@ sudo systemctl enable --now ssh
 sudo service ssh status
 ```
 
-### FTP
+## FTP
 - REF 1 : https://linuxhint.com/ubuntu-ftp-22-04-server-configuration/
 - REF 2 : https://itslinuxfoss.com/how-to-install-an-ftp-server-on-ubuntu-22-04/
 
-### COCKPIT
+## COCKPIT
 - REF : https://www.techrepublic.com/article/install-cockpit-ubuntu-better-server/
-### MYSQL
+## MYSQL
 - REF : https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04
 1. INSTALL
 ```shell
@@ -152,7 +152,7 @@ FLUSH PRIVILEGES;
 exit
 ```
 
-### PHPMYADMIN
+## PHPMYADMIN
 - REF : https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-20-04
 1. INSTALL
 ```shell
@@ -186,7 +186,7 @@ sudu apt install php
 ```
 - FIX 2 :
 
-### OPENCART
+## OPENCART
 
-### SAMBA
+## SAMBA
 
