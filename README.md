@@ -175,6 +175,42 @@ sudu apt install php
  
 
 ## OPENCART
+ref : https://www.linuxtuto.com/how-to-install-opencart-on-ubuntu-22-04/#
+- vertaul config file
+```shell
+<VirtualHost *:8083>
+    ServerAdmin admin@192.168.1.206
+    DocumentRoot /var/www/html/
+    ServerName 192.168.1.206
+    ServerAlias www.192.168.1.206
+
+    Alias /opencart "/var/www/html/opencart/upload/"
+
+    <Directory /var/www/html/opencart/upload/>
+        Options FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog /var/log/apache2/192.168.1.206-error_log
+    CustomLog /var/log/apache2/192.168.1.206-access_log common
+</VirtualHost>
+```
 
 ## SAMBA
+- ref 1 : https://phoenixnap.com/kb/ubuntu-samba
+- ref 2 : https://linuxsimply.com/how-to-access-samba-share-from-windows/
+- access `\\192.168.1.206\sharingfolder`
+- check user account
+```shell
+sudo pdbefit -L -v
+```
+- check config
+```shell
+testparm
+```
+- install acl  
+```shell
+sudo apt-get install acl
+```
 
