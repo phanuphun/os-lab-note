@@ -34,9 +34,9 @@ ls -ia
 ls -l
 ls -la
 ```
-- check services (ape คือชื่อ service ที่จะหา)
+- check services 
 ```shell
-ps -a | grep ape 
+ps -a | grep servicename
 ```
 - show service status (+ หมายถึง service กำลัง run อยู่ , - หมายถึง service กำลัง stop อยู่)
 ```shell
