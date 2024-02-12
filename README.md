@@ -179,12 +179,13 @@ SELECT user,authentication_string,plugin,host FROM mysql.user;
 ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';
 ```
 6. GO TO PHPMYADMIN `https://your_domain_or_IP/phpmyadmin`
-
-- FIX 1 : IF YOU AREADY INSTALLED AND PHP FILE NOT RUN TRY THIS
+   
+> [!WARNING]
+> FIX 1 : IF YOU AREADY INSTALLED AND PHP FILE NOT RUN TRY THIS
 ```shell
 sudu apt install php
 ```
-- FIX 2 :
+> FIX 2 :
 
 ## OPENCART
 
