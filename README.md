@@ -1,6 +1,6 @@
 - Ubunto Server 22.04
 ## WIFI ADAPTER
-- ref https://github.com/1999AZZAR/use-RTL8188FTV-on-linux
+- ref : https://github.com/1999AZZAR/use-RTL8188FTV-on-linux
 ## BASIC COMMAND
 - update software
 ```shell
