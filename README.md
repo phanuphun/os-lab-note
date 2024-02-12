@@ -117,7 +117,7 @@ sudo apt install mysql-server
 sudo systemctl start mysql.service
 ```
 3. config
-- ADD SECURITY TO MYSQL
+- add secure to mysql
 ```shell
 sudo mysql_secure_installation
 ```
@@ -127,7 +127,7 @@ sudo mysql_secure_installation
 sudo mysql
 sudo mysql -u root -p
 ```
-- CREATE USER ON MY SQL
+- create user 
 ```sql
 CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
 ```
