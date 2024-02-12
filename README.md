@@ -1,5 +1,5 @@
 ## READ FIRST 
-- โน๊ตนี้เป็นโน๊ตบันทึกวิชา lab operating system 
+- โน๊ตนี้เป็นโน๊ตบันทึก lab operating system 
 - Ubunto Server 22.04
 
 ## คำสั่งพื้นฐาน
