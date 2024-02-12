@@ -1,6 +1,6 @@
 - Ubunto Server 22.04
 
-## คำสั่งพื้นฐาน
+## BASIC COMMAND
 - update software
 ```shell
 sudo apt update
