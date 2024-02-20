@@ -36,6 +36,7 @@ network:
                   via: 192.168.1.1
 ```
 ## ติดตั้ง APACHE2
+web server สำหรับการแสดงผลหน้าเว็บ [อ่านวิธีการติดตั้ง](https://linuxhint.com/install-enable-openssh-ubuntu-22-04/)
 ## ติดตั้ง SSH
 ssh ใช้สำหรับการ Remote มาจากเครื่องอื่นหรือที่จะ remote มาจากเครื่อง client [อ้างอิง](https://linuxhint.com/install-enable-openssh-ubuntu-22-04/)
 - ติดตั้ง `sudo apt install openssh-server`
