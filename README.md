@@ -16,16 +16,11 @@ wifi adapter ที่ใช้จะเป็น RT8188FTV [อ่านวิ�
 - เปิด port `sudo allow port 22` (22 หมายเลข port ที่จะเปิด)
 
 ## ตั้ง STATIC IP  
-- ref : https://www.linuxtechi.com/static-ip-address-on-ubuntu-server/
+ใน lab จะตั้งค่า ip เป็น static และอยู่ในวงแลนเดียวกันกับเครื่องอื่นๆ [อ้างอิง](https://www.linuxtechi.com/static-ip-address-on-ubuntu-server/)
 1. ไปที่ `/etc/netplan/` หาไฟล์  `00-installer-config.yaml` (ชื่อไฟล์อาจเปลี่ยนไปตามการกำหนดค่า server)
-```shell
-cd /etc/netplan/
-ls -l
-```
-2. เข้าถึงไฟล์ `00-installer-config.yaml`
-```shell
-nano 00-installer-config.yaml
-```
+2. เข้าไปตาม path `cd /etc/netplan`
+3. ตรวจดูชื่อไฟล์ `ls -l` ว่ามี  `00-installer-config.yaml` ไหม
+4. แก้ไขไฟล์ `00-installer-config.yaml` ด้วยคำสั่ง `nano 00-installer-config.yaml` แล้วคัดลอกไปวาง (ตั้งค่าตาม lab)
 ```
 network:
     version:2
@@ -40,99 +35,37 @@ network:
                 - to: default
                   via: 192.168.1.1
 ```
-## APACHE2
-## SSH
-- สำหรับการ Remote มาจากเครื่องอื่น
-- ref : https://linuxhint.com/install-enable-openssh-ubuntu-22-04/
-1. install
-```shell
-sudo apt install openssh-server
-```
-2.open ssh everytime boots os (--now หมายถึงให้ start ตอนเปิดเครื่องทุกครั้งอย่างแน่นอน)
-```shell
-sudo systemctl enable --now ssh
-```
-3. check service
-```shell
-sudo service ssh status
-```
-## FTP
-- ref 1 : https://linuxhint.com/ubuntu-ftp-22-04-server-configuration/
-- ref 2 : https://itslinuxfoss.com/how-to-install-an-ftp-server-on-ubuntu-22-04/
-## COCKPIT
-- REF : https://www.techrepublic.com/article/install-cockpit-ubuntu-better-server/
-## MYSQL
-- REF : https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04
-1. install
-```shell
-sudo apt install mysql-server
-```
-2. start services
-```shell
-sudo systemctl start mysql.service
-```
-3. config
-- add secure to mysql
-```shell
-sudo mysql_secure_installation
-```
-4. create user
+## ติดตั้ง APACHE2
+## ติดตั้ง SSH
+ssh ใช้สำหรับการ Remote มาจากเครื่องอื่นหรือที่จะ remote มาจากเครื่อง client [อ้างอิง](https://linuxhint.com/install-enable-openssh-ubuntu-22-04/)
+- ติดตั้ง `sudo apt install openssh-server`
+- ให้เปิด ssh ทุกครั้งที่ boot ระบบด้วย `sudo systemctl enable --now ssh` (--now หมายถึงให้ start ตอนเปิดเครื่องทุกครั้งอย่างแน่นอน)
+- ตรวจสอบสถานะ `sudo service ssh status`
+## ติดตั้ง FTP
+ใช้สำหรับการโอนย้ายไฟล์ต่างๆ [อ้างอิง 1](https://linuxhint.com/ubuntu-ftp-22-04-server-configuration/) และ [อ้างอิง 2](https://itslinuxfoss.com/how-to-install-an-ftp-server-on-ubuntu-22-04/)
+## ติดตั้ง COCKPIT
+ใช้สำหรับในการจัดการระบบด้วย web ui ง่ายต่อการใช้งาน [อ่านวิธีการติดตั้ง](https://www.techrepublic.com/article/install-cockpit-ubuntu-better-server/)
+## ติดตั้ง MYSQL
+สำหรับจัดการฐานข้อมูลต่างๆที่จำนำมาใช้กับ phpmyadmin และ opencart [อ้างอิง](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04)
+- ติดตั้ง `sudo apt install mysql-server`
+- เปิด service `sudo systemctl start mysql.service`
+- เพิ่มความปลอดภัยให้กับ mysql `sudo mysql_secure_installation`
+- สร้าง user สำหรับ login โดยเข้าไปที่ mysql ก่อนด้วย `sudo mysql` หรือถ้าตั้งค่าการตรวจสอบ password ให้กับ root ตอนลงด้วยให้ใช้ `sudo mysql -u root -p` แล้วใส่ password ที่เราตั้งเอาไว้ 
 - access to mysql
-```shell
-sudo mysql
-sudo mysql -u root -p
-```
-- create user 
-```sql
-CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-```
-- or create user on mysql with encrypt password 
-```sql
-CREATE USER 'sammy'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-```
-- privilege
-```sql
-GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'localhost' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
-exit
-```
-
-## PHPMYADMIN
-- ref : https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-20-04
-- isntall
-```shell
-sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl
-```
-- open php extention
-```shell
-sudo phpenmod mbstring
-```
-- restart apache2
-```shell
-sudo service apache2 restart
-```
-- check user account in mysql
-```shell 
-sudo mysql 
-sudo mysql -u root -p 
-```
-```sql
-SELECT user,authentication_string,plugin,host FROM mysql.user;
-```
-- change root user authen `auth_socket` to `caching_sha2_password`
-```sql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';
-```
-- go to phpmyadmin `https://your_domain_or_IP/phpmyadmin`
-- if you aready installed and php file not run try this
-```shell
-sudu apt install php
-```
- 
-
-## OPENCART
-ref : https://www.linuxtuto.com/how-to-install-opencart-on-ubuntu-22-04/#
-- vertaul config file
+- เมื่อเข้ามาใน mysql แล้วใช้คำสั่ง mysql สร้าง `CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';` หรือใช้ `CREATE USER 'sammy'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';` เพื่อเพิ่มการเข้ารหัสสำหรับ password
+- กำหนดสิทธิ์ให้กับ user `GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'localhost' WITH GRANT OPTION;` และ `FLUSH PRIVILEGES;` เมื่อเสร็จหมดแล้วใช้ `exit` ในการออกจาก mysql
+## ติดตั้ง PHPMYADMIN
+web ui สำหรับการจัดการฐานข้อมูลซึ่งง่ายต่อการใช้งาน [อ้างอิง](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-20-04)
+- ติดตั้ง `sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl`
+- เปิดใช้งาน extention ของ php `sudo phpenmod mbstring`
+- restart apache2 `sudo service apache2 restart`
+- ดู user account ใน mysql `sudo mysql ` หรือ `sudo mysql -u root -p ` เมื่อเข้ามาใน mysql ได้แล้วใช้คำสั่ง `SELECT user,authentication_string,plugin,host FROM mysql.user;` เพื่อดูรายชื่อ user ทั้งหมด
+- เปลี่ยนการตรวจสอบความปลอดภัยของ root จาก `auth_socket` to `caching_sha2_password` ด้วยคำสั่ง `ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';`
+- ไปที่ phpmyadmin ด้วย `https://your_domain_or_IP/phpmyadmin` เป็นการติดตั้งเสร็จสิ้น
+- *** กรณีที่ phpmyadmin ไม่แสดงลองใช้คำสั่ง `sudu apt install php`
+## การติดตั้ง OPENCART
+เป็น web สำหรับขายของโดยที่เราไม่ต้องเขียนเว็บเองจำเป็นต้องมี mysql , phpmyadmin ก่อน [อ่านวิธีการติดตั้ง](https://www.linuxtuto.com/how-to-install-opencart-on-ubuntu-22-04/#)
+- การตั้งค่าไฟล์ virturehost ของ opencart
 ```shell
 <VirtualHost *:8083>
     ServerAdmin admin@192.168.1.206
@@ -152,21 +85,11 @@ ref : https://www.linuxtuto.com/how-to-install-opencart-on-ubuntu-22-04/#
     CustomLog /var/log/apache2/192.168.1.206-access_log common
 </VirtualHost>
 ```
+## ติดตั้ง SAMBA
+เป็น service สำหรับการแชร์ไฟล์ให้กันคนอื่นๆ [วิธีการติดตั้ง](https://phoenixnap.com/kb/ubuntu-samba) และ [การเข้าถึง folder](https://linuxsimply.com/how-to-access-samba-share-from-windows/)
+- ตัวอย่างการเข้าถึง folder ที่แชร์ `\\192.168.1.206\sharingfolder`
+- ตรวจสอบ user account ที่สร้างใน samba `sudo pdbefit -L -v`
+- ตรวจสอบ config ที่เราพึ่ง config ไป `testparm`
+- ติดตั้ง acl สำหรับการติดตั้งบาง package ในตัวอย่าง `sudo apt-get install acl`
 
-## SAMBA
-- ref 1 : https://phoenixnap.com/kb/ubuntu-samba
-- ref 2 : https://linuxsimply.com/how-to-access-samba-share-from-windows/
-- access `\\192.168.1.206\sharingfolder`
-- check user account
-```shell
-sudo pdbefit -L -v
-```
-- check config
-```shell
-testparm
-```
-- install acl  
-```shell
-sudo apt-get install acl
-```
 
