@@ -3,64 +3,60 @@
 ## ติดตั้ง Wifi adapter สำหรับ Client
 wifi adapter ที่ใช้จะเป็น RT8188FTV [อ่านวิธีติดตั้งได้ที่นี่](https://github.com/1999AZZAR/use-RTL8188FTV-on-linux)
 ## คำสั่ง Linux พื้นฐาน
-- update software
+- อัพเดต software
 ```shell
 sudo apt update
 sudo apt list --upgradable
 ```
-
-- shut down and reboot 
+- ปิดเครื่องและรีสตาร์ท
 ```shell
 sudo shutdown -h now
 sudo reboot now
 ```
-
-- check interface
+- ตรวจสอบ interface สำหรับ network
 ```shell
 ip a
-```
-```shell
 ip a s dev enp1s0 
 ```
-- restart network
+- รีสตาร์ท network
 ```shell
 sudo ip link set enp1s0 down
 sudo ip link set enp1s0 up
 ```
-- check folder
+- ตรวจสอบ folder
 ```shell
 ls -i
 ls -ia
 ls -l
 ls -la
 ```
-- check services 
+- ตรวจสอบ services ในเครื่อง 
 ```shell
 ps -a | grep servicename
 ```
-- show service status (+ หมายถึง service กำลัง run อยู่ , - หมายถึง service กำลัง stop อยู่)
+- ตรวจสอบสถานะ service (+ หมายถึง service กำลัง run อยู่ , - หมายถึง service กำลัง stop อยู่)
 ```shell
 serivce --status-all
 ```
-- check specific service
+- ดูสถานะ service นั้นๆ 
 ```shell
 sudo service apache2 status
 ```
-- restart service 
+- รีสตาร์ท service 
 ```shell
 sudo service apache2 restart
 ```
-- check firewall (ดู firewall ที่เปิดอยู่)
+- ดู firewall ที่เปิดอยู่
 ```shell
 sudo ufw status
 sudo ufw status verbose
 ```
-- open port (22 หมายเลข port ที่จะเปิด)
+- เปิด port (22 หมายเลข port ที่จะเปิด)
 ```shell
 sudo allow port 22
 ```
 
-## CONFIG IP
+## ตั้ง STATIC IP  
 - ref : https://www.linuxtechi.com/static-ip-address-on-ubuntu-server/
 1. ไปที่ `/etc/netplan/` หาไฟล์  `00-installer-config.yaml` (ชื่อไฟล์อาจเปลี่ยนไปตามการกำหนดค่า server)
 ```shell
