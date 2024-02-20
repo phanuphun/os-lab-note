@@ -3,58 +3,17 @@
 ## ติดตั้ง Wifi adapter สำหรับ Client
 wifi adapter ที่ใช้จะเป็น RT8188FTV [อ่านวิธีติดตั้งได้ที่นี่](https://github.com/1999AZZAR/use-RTL8188FTV-on-linux)
 ## คำสั่ง Linux พื้นฐาน
-- อัพเดต software
-```shell
-sudo apt update
-sudo apt list --upgradable
-```
-- ปิดเครื่องและรีสตาร์ท
-```shell
-sudo shutdown -h now
-sudo reboot now
-```
-- ตรวจสอบ interface สำหรับ network
-```shell
-ip a
-ip a s dev enp1s0 
-```
-- รีสตาร์ท network
-```shell
-sudo ip link set enp1s0 down
-sudo ip link set enp1s0 up
-```
-- ตรวจสอบ folder
-```shell
-ls -i
-ls -ia
-ls -l
-ls -la
-```
-- ตรวจสอบ services ในเครื่อง 
-```shell
-ps -a | grep servicename
-```
-- ตรวจสอบสถานะ service (+ หมายถึง service กำลัง run อยู่ , - หมายถึง service กำลัง stop อยู่)
-```shell
-serivce --status-all
-```
-- ดูสถานะ service นั้นๆ 
-```shell
-sudo service apache2 status
-```
-- รีสตาร์ท service 
-```shell
-sudo service apache2 restart
-```
-- ดู firewall ที่เปิดอยู่
-```shell
-sudo ufw status
-sudo ufw status verbose
-```
-- เปิด port (22 หมายเลข port ที่จะเปิด)
-```shell
-sudo allow port 22
-```
+- อัพเดต software `sudo apt update` จากนั้นก็ `sudo apt list --upgradable`
+- ปิดเครื่องและรีสตาร์ท `sudo shutdown -h now` และ `sudo reboot now`
+- ตรวจสอบ interface สำหรับ network `ip a` หรือ `ip a s dev enp1s0`
+- รีสตาร์ท network `sudo ip link set enp1s0 down` และ `sudo ip link set enp1s0 up`
+- ตรวจสอบ folder `ls -i` , `ls -ia` , `ls -l` , `ls -la`
+- ตรวจสอบ services ในเครื่อง  `ps -a | grep ชื่อservice`
+- ตรวจสอบสถานะ service `serivce --status-all` (+ หมายถึง service กำลัง run อยู่ , - หมายถึง service กำลัง stop อยู่)
+- ดูสถานะ service นั้นๆ  `sudo service apache2 status`
+- รีสตาร์ท service `sudo service apache2 restart`
+- ดู firewall ที่เปิดอยู่ `sudo ufw status` หรือ `sudo ufw status verbose`
+- เปิด port `sudo allow port 22` (22 หมายเลข port ที่จะเปิด)
 
 ## ตั้ง STATIC IP  
 - ref : https://www.linuxtechi.com/static-ip-address-on-ubuntu-server/
