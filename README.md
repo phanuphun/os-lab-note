@@ -1,7 +1,8 @@
-- Ubunto Server 22.04
-## WIFI ADAPTER
-- ref : https://github.com/1999AZZAR/use-RTL8188FTV-on-linux
-## BASIC COMMAND
+# อ่านก่อน
+โน๊ตนี้เป็นการจดบันทึกของวิชา Operating System Labotory โดย os ฝั่ง server ที่ใช้จะเป็น Ubuntu server 22.04 และฝั่ง client ที่ใช้จะเป็น ubuntu mate
+## ติดตั้ง Wifi adapter สำหรับ Client
+wifi adapter ที่ใช้จะเป็น RT8188FTV [อ่านวิธีติดตั้งได้ที่นี่](https://github.com/1999AZZAR/use-RTL8188FTV-on-linux)
+## คำสั่ง Linux พื้นฐาน
 - update software
 ```shell
 sudo apt update
